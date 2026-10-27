@@ -1,0 +1,14 @@
+
+.venv/
+__pycache__/
+*.py[cod]
+*.exe
+.env
+.streamlit/secrets.toml
+*_backup*
+backup_before_submission/
+app_before_deployment.py
+api/patient_api
+patients.txt
+appointments.txt
+medicines.txt
