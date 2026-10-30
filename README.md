@@ -125,6 +125,20 @@ Run on Windows:
 - Improve the healthcare assistant with medically validated information.
 - Deploy the application for online access.
 
+- ## 📸 Project Screenshots
+
+### Login Page
+<img width="1087" height="807" alt="login png" src="https://github.com/user-attachments/assets/ac14ce7b-420e-4b17-823e-7aeb7a2d70be" />
+
+### Dashboard
+<img width="1865" height="831" alt="dashboard png" src="https://github.com/user-attachments/assets/17c4ec52-07fb-49f5-9939-febd3d6ade4e" />
+
+### Appointment Management
+<img width="1861" height="827" alt="appointments png" src="https://github.com/user-attachments/assets/4face3e9-efc8-410d-96f6-a32a7b5389f4" />
+
+### Healthcare Assistant
+<img width="1532" height="762" alt="healthcare-assistant png" src="https://github.com/user-attachments/assets/01238745-55b3-47c4-aad9-4e31bc57bc0e" />
+
 ## ⚠️ Disclaimer
 
 This project is developed for educational purposes. It is not a substitute for professional medical advice, diagnosis, or treatment. Face detection is not identity verification.
