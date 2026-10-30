@@ -33,44 +33,48 @@ FACE_MODEL = BASE_DIR / "haarcascade_frontalface_default.xml"
 
 
 # ==========================================
-# 3. ORIGINAL DESIGN - DO NOT CHANGE
+# 3. MODERN DARK HEALTHCARE UI
 # ==========================================
 
 st.markdown("""
 <style>
-.stApp {
-    background-color: #f4f8fb;
-}
-
-h1, h2, h3 {
-    color: #12304a;
-}
-
-[data-testid="stSidebar"] {
-    background-color: #12304a;
-}
-
-[data-testid="stSidebar"] * {
-    color: white;
-}
-
-.stButton > button {
-    background-color: #087f8c;
-    color: white;
-    border-radius: 8px;
-    border: none;
-}
-
-.stButton > button:hover {
-    background-color: #05636d;
-    color: white;
-}
-
-div[data-testid="stMetric"] {
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-}
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap');
+:root { --bg:#080f1d; --panel:#111d30; --panel2:#15243a; --line:#243a55; --cyan:#43d9ee; --muted:#91a8c2; }
+.stApp { background:radial-gradient(circle at 75% 0%,#142b43 0%,#0a1424 38%,#070d18 100%); color:#eaf3ff; font-family:'DM Sans',sans-serif; }
+.block-container { max-width:1440px; padding-top:2rem; padding-bottom:3rem; }
+h1,h2,h3,h4 { font-family:'Manrope',sans-serif!important; color:#f2f8ff!important; letter-spacing:-.4px; }
+h1 { font-size:2.15rem!important; }
+p,li,label,.stMarkdown { color:#c5d4e6; }
+[data-testid="stSidebar"] { background:linear-gradient(180deg,#0d1a2c,#091321); border-right:1px solid #20354e; }
+[data-testid="stSidebar"] > div { padding:1.5rem 1rem; }
+[data-testid="stSidebar"] [data-testid="stRadio"] label { padding: .55rem .7rem; border-radius:10px; }
+[data-testid="stSidebar"] [data-testid="stRadio"] label:hover { background:#172b42; }
+[data-testid="stSidebar"] [data-testid="stRadio"] label p { color:#c9d9eb!important; font-weight:600; }
+.stButton>button,.stFormSubmitButton>button { background:linear-gradient(100deg,#087eaa,#12b9c8); color:white!important; border:0; border-radius:10px; min-height:2.7rem; font-weight:700; box-shadow:0 7px 18px #00a9c51c; transition:.2s; }
+.stButton>button:hover,.stFormSubmitButton>button:hover { background:linear-gradient(100deg,#0c9dcc,#25d9df); transform:translateY(-1px); box-shadow:0 8px 22px #00c5dd35; }
+[data-testid="stMetric"] { background:linear-gradient(145deg,#172941,#101d30); border:1px solid #29445f; border-radius:16px; padding:18px 20px; box-shadow:0 10px 25px #00000020; }
+[data-testid="stMetricLabel"] p { color:#9fb4cb!important; font-size:.85rem!important; }
+[data-testid="stMetricValue"] { color:#53dff0!important; font-family:'Manrope',sans-serif; }
+.stTextInput input,.stNumberInput input,.stDateInput input,.stTextArea textarea { background:#0d1a2b!important; color:#eef7ff!important; border:1px solid #2a435e!important; border-radius:10px!important; }
+[data-baseweb="select"]>div { background:#0d1a2b!important; border-color:#2a435e!important; border-radius:10px!important; }
+[data-baseweb="select"] * { color:#eef7ff!important; }
+button[data-baseweb="tab"] { color:#9fb6ce!important; font-weight:700; }
+button[data-baseweb="tab"][aria-selected="true"] { color:#51dcec!important; border-bottom:2px solid #51dcec!important; }
+[data-testid="stDataFrame"],[data-testid="stTable"] { border:1px solid #29435e; border-radius:12px; overflow:hidden; }
+div[data-testid="stForm"],div[data-testid="stExpander"] { background:#101d30; border:1px solid #263e59; border-radius:14px; padding:12px; }
+hr { border-color:#263e59!important; }
+a { color:#54d9ec!important; }
+/* reusable visual sections */
+.hero-panel { background:linear-gradient(110deg,#12344b,#14253b 65%,#17263d); border:1px solid #2b526d; border-radius:20px; padding:25px 28px; margin:0 0 22px 0; box-shadow:0 16px 35px #00000024; }
+.hero-kicker { color:#58dff0; text-transform:uppercase; letter-spacing:1.5px; font-size:11px; font-weight:800; }
+.hero-title { color:#f4f9ff; font-family:'Manrope',sans-serif; font-size:27px; font-weight:800; margin:7px 0 4px; }
+.hero-copy { color:#b4c8dc; font-size:14px; }
+.section-label { color:#55d9eb; font-size:11px; letter-spacing:1.5px; font-weight:800; text-transform:uppercase; margin:8px 0 10px; }
+.info-panel { background:linear-gradient(145deg,#14243a,#101c2e); border:1px solid #29415c; border-radius:16px; padding:18px; min-height:110px; }
+.info-panel .small { color:#91a9c2; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.8px; }
+.info-panel .big { color:#eff8ff; font-family:'Manrope',sans-serif; font-size:23px; font-weight:800; margin-top:8px; }
+.info-panel .hint { color:#91a9c2; font-size:12px; margin-top:3px; }
+[data-testid="stAlert"] { border-radius:12px; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -130,11 +134,9 @@ initialize_files()
 # ==========================================
 
 def heading(title, description=""):
-    st.title(title)
-
+    st.markdown(f"<div class='section-label'>AI SMART HEALTHCARE</div><h1>{title}</h1>", unsafe_allow_html=True)
     if description:
-        st.write(description)
-
+        st.caption(description)
     st.divider()
 
 
@@ -338,29 +340,39 @@ def login_page():
 # ==========================================
 
 def doctor_overview():
-    heading(
-        "Doctor Dashboard",
-        "Welcome to your healthcare management dashboard."
-    )
-
     patients = get_patients()
     appointments = get_appointments()
     medicines = get_medicines()
-
-    col1, col2, col3 = st.columns(3)
-    col1.metric("Total Patients", len(patients))
-    col2.metric("Total Appointments", len(appointments))
-    col3.metric("Medicine Types", len(medicines))
-
-    st.subheader("Recent Appointments")
-    if appointments:
-        df = records_to_dataframe(
-            appointments[-10:][::-1],
-            ["Appointment ID", "Patient ID", "Doctor", "Date", "Time", "Status"]
-        )
-        st.dataframe(df, use_container_width=True, hide_index=True)
-    else:
-        st.info("No appointments booked yet.")
+    upcoming = [a for a in appointments if len(a) == 6 and a[5] == "Upcoming"]
+    st.markdown("""
+    <div class="hero-panel">
+      <div class="hero-kicker">Doctor workspace · Overview</div>
+      <div class="hero-title">Good day, Doctor 👋</div>
+      <div class="hero-copy">Here is your clinic snapshot. Review patient activity and manage today's care from one place.</div>
+    </div>""", unsafe_allow_html=True)
+    c1,c2,c3,c4 = st.columns(4)
+    c1.metric("Total patients", len(patients), help="Registered patient records")
+    c2.metric("All appointments", len(appointments))
+    c3.metric("Upcoming", len(upcoming))
+    c4.metric("Medicine items", len(medicines))
+    left,right = st.columns([1.65,1], gap="large")
+    with left:
+        st.markdown("<div class='section-label'>RECENT ACTIVITY</div>", unsafe_allow_html=True)
+        st.subheader("Recent appointments")
+        if appointments:
+            names = {p[0]:p[1] for p in patients if len(p)==5}
+            rows = [{"Patient":names.get(a[1],"Unknown"),"Doctor":a[2],"Date":a[3],"Time":a[4],"Status":a[5]} for a in appointments[-8:][::-1] if len(a)==6]
+            st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+        else:
+            st.info("No appointments yet. Open Appointments to create the first booking.")
+    with right:
+        st.markdown("<div class='section-label'>QUICK SUMMARY</div>", unsafe_allow_html=True)
+        st.subheader("Clinic at a glance")
+        st.markdown(f"<div class='info-panel'><div class='small'>Registered patients</div><div class='big'>{len(patients)}</div><div class='hint'>Patient records in your system</div></div>", unsafe_allow_html=True)
+        st.write("")
+        st.markdown(f"<div class='info-panel'><div class='small'>Appointments needing attention</div><div class='big'>{len(upcoming)}</div><div class='hint'>Currently marked as upcoming</div></div>", unsafe_allow_html=True)
+        st.write("")
+        st.caption("Use the navigation panel to manage patients, appointments and medicine inventory.")
 
 
 # ==========================================
@@ -909,32 +921,27 @@ def medicine_management():
 # ==========================================
 
 def patient_profile():
-    heading(
-        "My Profile",
-        "View your registered patient information."
-    )
-
     patient_id = str(st.session_state.get("patient_id", "102"))
-
-    patient = next(
-        (
-            p for p in get_patients()
-            if len(p) == 5 and p[0] == patient_id
-        ),
-        None
-    )
-
+    patient = next((p for p in get_patients() if len(p)==5 and p[0]==patient_id), None)
+    st.markdown("""
+    <div class="hero-panel"><div class="hero-kicker">Patient space · Personal health</div>
+    <div class="hero-title">Your health, all in one place</div>
+    <div class="hero-copy">View your registered details and keep track of your care journey.</div></div>
+    """, unsafe_allow_html=True)
     if patient:
-        col1, col2 = st.columns(2)
-
-        with col1:
-            st.write("**Patient ID:**", patient[0])
-            st.write("**Name:**", patient[1])
-            st.write("**Age:**", patient[2])
-
-        with col2:
-            st.write("**Gender:**", patient[3])
-            st.write("**Reason for Visit:**", patient[4])
+        a,b = st.columns([1,2], gap="large")
+        with a:
+            st.markdown(f"<div class='info-panel'><div class='small'>Patient ID</div><div class='big'>#{patient[0]}</div><div class='hint'>Your unique patient reference</div></div>", unsafe_allow_html=True)
+        with b:
+            st.subheader(patient[1])
+            st.caption("Registered patient profile")
+            x,y = st.columns(2)
+            with x:
+                st.markdown(f"<div class='info-panel'><div class='small'>Age</div><div class='big'>{patient[2]}</div></div>", unsafe_allow_html=True)
+            with y:
+                st.markdown(f"<div class='info-panel'><div class='small'>Gender</div><div class='big'>{patient[3]}</div></div>", unsafe_allow_html=True)
+            st.write("")
+            st.markdown(f"<div class='info-panel'><div class='small'>Reason for visit</div><div class='big' style='font-size:18px'>{patient[4]}</div></div>", unsafe_allow_html=True)
     else:
         st.warning("Patient profile not found.")
 
@@ -944,47 +951,43 @@ def patient_profile():
 # ==========================================
 
 def patient_appointments():
-    heading(
-        "My Appointments",
-        "View your appointment history and book an available slot."
-    )
     patient_id = str(st.session_state.get("patient_id", "102"))
-    appointments = [a for a in get_appointments() if a[1] == patient_id]
-
+    appointments = [a for a in get_appointments() if len(a)==6 and a[1]==patient_id]
+    st.markdown("""
+    <div class="hero-panel"><div class="hero-kicker">Patient space · Scheduling</div>
+    <div class="hero-title">Appointments</div><div class="hero-copy">Review your bookings or schedule a visit with an available doctor.</div></div>
+    """, unsafe_allow_html=True)
+    upcoming = [a for a in appointments if a[5]=="Upcoming"]
+    done = [a for a in appointments if a[5]=="Completed"]
+    c1,c2,c3 = st.columns(3)
+    c1.metric("Total bookings",len(appointments)); c2.metric("Upcoming",len(upcoming)); c3.metric("Completed",len(done))
+    st.markdown("<div class='section-label'>YOUR BOOKINGS</div>",unsafe_allow_html=True)
     if appointments:
-        df = records_to_dataframe(
-            appointments,
-            ["Appointment ID", "Patient ID", "Doctor", "Date", "Time", "Status"]
-        )
-        st.dataframe(df.drop(columns=["Patient ID"]), use_container_width=True, hide_index=True)
+        df=records_to_dataframe(appointments,["Appointment ID","Patient ID","Doctor","Date","Time","Status"])
+        st.dataframe(df.drop(columns=["Patient ID"]),use_container_width=True,hide_index=True)
     else:
-        st.info("You do not have any appointments yet.")
-
-    st.subheader("Book a New Appointment")
-    with st.form("patient_booking_form", clear_on_submit=True):
-        doctor = st.selectbox("Choose Doctor", list(DOCTOR_SCHEDULES.keys()))
-        appointment_date = st.date_input(
-            "Choose Date", min_value=date.today(), key="patient_appointment_date"
-        )
-        available_slots = get_available_slots(doctor, appointment_date)
-        appointment_time = st.selectbox("Available Time", available_slots) if available_slots else None
-        if not available_slots:
-            st.warning("No slots are available for this doctor on the selected date.")
-        submitted = st.form_submit_button("Book Appointment")
-
-        if submitted:
-            if appointment_time is None:
-                st.error("Choose a date with an available slot.")
-            elif is_slot_booked(doctor, appointment_date, appointment_time):
-                st.error("This slot is no longer available. Please try another date or time.")
-            else:
-                new_id = next_record_id(get_appointments())
-                save_appointment_record(
-                    new_id, patient_id, doctor, appointment_date,
-                    appointment_time, "Upcoming"
-                )
-                st.success(f"Appointment booked successfully! ID: {new_id}")
-                st.rerun()
+        st.info("You do not have any appointments yet. Use the booking panel below to schedule your first visit.")
+    st.markdown("<div class='section-label'>SCHEDULE A VISIT</div>",unsafe_allow_html=True)
+    with st.container(border=True):
+        st.subheader("Book a new appointment")
+        with st.form("patient_booking_form",clear_on_submit=True):
+            col1,col2=st.columns(2)
+            with col1:
+                doctor=st.selectbox("Choose doctor",list(DOCTOR_SCHEDULES.keys()))
+            with col2:
+                appointment_date=st.date_input("Choose date",min_value=date.today(),key="patient_appointment_date")
+            available_slots=get_available_slots(doctor,appointment_date)
+            appointment_time=st.selectbox("Available time",available_slots) if available_slots else None
+            if not available_slots: st.warning("No slots are available for this doctor on the selected date.")
+            submitted=st.form_submit_button("Confirm appointment",use_container_width=True)
+            if submitted:
+                if appointment_time is None: st.error("Choose a date with an available slot.")
+                elif is_slot_booked(doctor,appointment_date,appointment_time): st.error("This slot is no longer available. Please try another date or time.")
+                else:
+                    new_id=next_record_id(get_appointments())
+                    save_appointment_record(new_id,patient_id,doctor,appointment_date,appointment_time,"Upcoming")
+                    st.success(f"Appointment booked successfully! ID: {new_id}")
+                    st.rerun()
 
 
 # ==========================================
@@ -1403,36 +1406,18 @@ def face_detection():
 
 def doctor_dashboard():
     with st.sidebar:
-        st.title("🏥 Smart Healthcare")
-        st.write("Doctor Panel")
-
-        selected_page = st.radio(
-            "Navigation",
-            [
-                "Overview",
-                "Patients",
-                "Appointments",
-                "Medicines"
-            ]
-        )
-
+        st.markdown("<div style='font-size:12px;letter-spacing:2px;color:#55d9eb;font-weight:800'>AI SMART HEALTHCARE</div><h2 style='margin-top:4px'>CareDesk</h2>",unsafe_allow_html=True)
+        st.caption("DOCTOR WORKSPACE")
         st.divider()
-
-        if st.button("Logout", use_container_width=True):
-            st.session_state.clear()
-            st.rerun()
-
-    if selected_page == "Overview":
-        doctor_overview()
-
-    elif selected_page == "Patients":
-        patient_management()
-
-    elif selected_page == "Appointments":
-        appointment_management()
-
-    elif selected_page == "Medicines":
-        medicine_management()
+        selected_page=st.radio("WORKSPACE",["Overview","Patients","Appointments","Medicines"],label_visibility="collapsed",key="doctor_navigation")
+        st.divider()
+        st.caption("Signed in as Doctor")
+        if st.button("↪  Log out",use_container_width=True):
+            st.session_state.clear(); st.rerun()
+    if selected_page=="Overview": doctor_overview()
+    elif selected_page=="Patients": patient_management()
+    elif selected_page=="Appointments": appointment_management()
+    elif selected_page=="Medicines": medicine_management()
 
 
 # ==========================================
@@ -1441,48 +1426,24 @@ def doctor_dashboard():
 
 def patient_dashboard():
     with st.sidebar:
-        st.title("🏥 Smart Healthcare")
-        st.write("Patient Panel")
-
-        selected_page = st.radio(
-            "Navigation",
-            [
-                "My Profile",
-                "My Appointments",
-                "Healthcare Assistant",
-                "Voice Bot",
-                "Face Detection"
-            ]
-        )
-
+        st.markdown("<div style='font-size:12px;letter-spacing:2px;color:#55d9eb;font-weight:800'>AI SMART HEALTHCARE</div><h2 style='margin-top:4px'>CareDesk</h2>",unsafe_allow_html=True)
+        st.caption("PATIENT PORTAL")
         st.divider()
-
-        if st.button("Logout", use_container_width=True):
-            st.session_state.clear()
-            st.rerun()
-
-    if selected_page == "My Profile":
-        patient_profile()
-
-    elif selected_page == "My Appointments":
-        patient_appointments()
-
-    elif selected_page == "Healthcare Assistant":
-        heading(
-            "Healthcare Assistant",
-            "Ask about appointments, doctors, and medicines."
-        )
+        selected_page=st.radio("YOUR HEALTH",["My Profile","My Appointments","Healthcare Assistant","Voice Bot","Face Detection"],label_visibility="collapsed",key="patient_navigation")
+        st.divider()
+        st.caption("Your personal healthcare space")
+        if st.button("↪  Log out",use_container_width=True):
+            st.session_state.clear(); st.rerun()
+    if selected_page=="My Profile": patient_profile()
+    elif selected_page=="My Appointments": patient_appointments()
+    elif selected_page=="Healthcare Assistant":
+        st.markdown("<div class='hero-panel'><div class='hero-kicker'>Patient tools · Chat support</div><div class='hero-title'>Healthcare Assistant</div><div class='hero-copy'>Ask about your saved appointments, configured doctors, patient ID and medicine inventory.</div></div>",unsafe_allow_html=True)
         healthcare_chatbot()
-
-    elif selected_page == "Voice Bot":
-        heading("Voice Healthcare Assistant", "Ask a question using your microphone.")
+    elif selected_page=="Voice Bot":
+        st.markdown("<div class='hero-panel'><div class='hero-kicker'>Patient tools · Voice support</div><div class='hero-title'>Voice Assistant</div><div class='hero-copy'>Speak a question and hear a response from your demo healthcare records.</div></div>",unsafe_allow_html=True)
         voice_healthcare_bot()
-
-    elif selected_page == "Face Detection":
-        heading(
-            "Face Detection",
-            "Use your webcam to detect a visible face."
-        )
+    elif selected_page=="Face Detection":
+        st.markdown("<div class='hero-panel'><div class='hero-kicker'>Patient tools · Camera</div><div class='hero-title'>Face Detection</div><div class='hero-copy'>Use your webcam to detect a visible face in a captured image.</div></div>",unsafe_allow_html=True)
         face_detection()
 
 
